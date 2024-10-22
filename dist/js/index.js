@@ -42,6 +42,7 @@ $(document).ready(function() {
     let noteId = $(this).closest('.note-item').data('id');
     $.get('notes.php', { action: 'getOne', id: noteId }, function(data) {
       let note = JSON.parse(data);
+      $('#noteModalLabel').html('Catatan: '+note.title);
       $('#noteId').val(note.id);
       $('#noteTitle').val(note.title);
       $('#noteContent').summernote('code', note.text);
