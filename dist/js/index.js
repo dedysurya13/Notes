@@ -12,18 +12,19 @@ $(document).ready(function() {
 
   function renderNotes(notes) {
     let noteList = '';
+    notes.reverse();
     $.each(notes, function(index, note) {
       // Ambil 100 karakter pertama dari teks catatan
       let noteText = note.text.substring(0, 100);
-      noteList += `<div class="note-item d-flex justify-content-between align-items-center" data-id="${note.id}">
+      noteList += `<a href="#" class="list-group-item list-group-item-action note-item" data-id="${note.id}">
         <div>
-          <h5 class="mb-0">${note.title}</h5>
+          <h5 class="mb-1">${note.title}</h5>
           <small class="text-muted">${noteText}${note.text.length > 100 ? '...' : ''}</small>
         </div>
-        <div>
+        <div class="text-right">
           <button class="btn btn-sm btn-danger deleteNoteBtn">Hapus</button>
         </div>
-      </div><hr>`;
+      </a>`;
     });
     $('#noteList').html(noteList);
   }
